@@ -1,0 +1,14 @@
+.Login{
+  width: 20%;
+  margin: auto;
+  margin-top: 50px;
+  display: flex;
+  flex-direction: column;
+  box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+  align-items: center;
+  padding: 20px;
+}
+.input_part{
+  display: flex;
+  flex-direction: column;
+}
