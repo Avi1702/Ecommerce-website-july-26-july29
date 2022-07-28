@@ -13,60 +13,59 @@ import MailIcon from '@mui/icons-material/Mail';
 
 export default function SideDrawer() {
     
-  const [state, setState] = React.useState({
+//   const [state, setState] = React.useState({
   
-    left: false
+//     left: false
     
-  });
+//   });
 
-  const toggleDrawer = (anchor, open) => (event) => {
-    // console.log(anchor)
-    // if (event.type === 'keydown' && (event.key === 'Tab' || event.key === 'Shift')) {
-    //   return;
-    // }
+//   const toggleDrawer = (anchor, open) => (event) => {
+//     console.log(anchor)
+//     if (event.type === 'keydown' && (event.key === 'Tab' || event.key === 'Shift')) {
+//       return;
+//     }
 
-    setState({[anchor]: open });
-  };
+//     setState({[anchor]: open });
+//   };
 
-  const list = (anchor) => (
-    <Box
-      sx={{ width:250 }}
-      role="presentation"
-      onClick={toggleDrawer(anchor, false)}
-      onKeyDown={toggleDrawer(anchor, false)}
-    >
-      <List>
-        {['Inbox', 'Starred', 'Send email', 'Drafts'].map((text, index) => (
-          <ListItem key={text} disablePadding>
-            <ListItemButton>
-              <ListItemIcon>
-                {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
-              </ListItemIcon>
-              <ListItemText primary={text} />
-            </ListItemButton>
-          </ListItem>
-         ))}
-      </List>
-      <Divider />
-      <List>
-        {['All mail', 'Trash', 'Spam'].map((text, index) => (
-          <ListItem key={text} disablePadding>
-            <ListItemButton>
-              <ListItemIcon>
-                {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
-              </ListItemIcon>
-              <ListItemText primary={text} />
-            </ListItemButton>
-          </ListItem>
-        ))}
-      </List>
-    </Box>
+//   const list = (anchor) => (
+//     <Box
+//       sx={{ width:250 }}
+//       role="presentation"
+//       onClick={toggleDrawer(anchor, false)}
+//       onKeyDown={toggleDrawer(anchor, false)}
+//     >
+//       <List>
+//         {['Inbox', 'Starred', 'Send email', 'Drafts'].map((text, index) => (
+//           <ListItem key={text} disablePadding>
+//             <ListItemButton>
+//               <ListItemIcon>
+//                 {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
+//               </ListItemIcon>
+//               <ListItemText primary={text} />
+//             </ListItemButton>
+//           </ListItem>
+//          ))}
+//       </List>
+//       <Divider />
+//       <List>
+//         {['All mail', 'Trash', 'Spam'].map((text, index) => (
+//           <ListItem key={text} disablePadding>
+//             <ListItemButton>
+//               <ListItemIcon>
+//                 {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
+//               </ListItemIcon>
+//               <ListItemText primary={text} />
+//             </ListItemButton>
+//           </ListItem>
+//         ))}
+//       </List>
+//     </Box>
   );
 
   return (
     <div>
-      {/* {['left', 'right', 'top', 'bottom'].map((anchor) => ( */}
-
+    
         <React.Fragment key={"left"}>
           <Button onClick={toggleDrawer("left", true)}>Left</Button>
           <Drawer

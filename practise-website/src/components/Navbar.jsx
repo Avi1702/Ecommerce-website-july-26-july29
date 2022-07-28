@@ -14,8 +14,9 @@ import ListItem from '@mui/material/ListItem';
 import ListItemButton from '@mui/material/ListItemButton';
 import ListItemIcon from '@mui/material/ListItemIcon';
 import ListItemText from '@mui/material/ListItemText';
-import InboxIcon from '@mui/icons-material/MoveToInbox';
-import MailIcon from '@mui/icons-material/Mail';
+// import { Link } from '@mui/material';
+// import InboxIcon from '@mui/icons-material/MoveToInbox';
+// import MailIcon from '@mui/icons-material/Mail';
 import {Link} from "react-router-dom"
 import { useDispatch, useSelector } from 'react-redux';
 import { LogOut_success } from '../Redux/auth/action';
@@ -49,29 +50,68 @@ export default function Navbar() {
           onKeyDown={toggleDrawer(anchor, false)}
         >
           <List>
-            {['Home', 'Grocery', 'Pharmacy'].map((text, index) => (
-              <ListItem key={text} disablePadding>
-                <ListItemButton>
+            <Link to="/" style={{color:"black"}}>
+            <ListItem  disablePadding>
+                <ListItemButton >
                   <ListItemIcon>
-                    {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
+                   
                   </ListItemIcon>
-                  <ListItemText primary={text} />
+                  <ListItemText primary={"Home"} />
                 </ListItemButton>
-              </ListItem>
-             ))}
+              </ListItem>  
+            </Link>
+          </List>
+
+          <List>
+            <Link to="/grocery" style={{color:"black"}}>
+            <ListItem  disablePadding>
+                <ListItemButton >
+                  <ListItemIcon>
+                   
+                  </ListItemIcon>
+                  <ListItemText primary={"Grocery"} />
+                </ListItemButton>
+              </ListItem>  
+              {/* Grocery */}
+            </Link>
+          </List>
+
+          <List>
+            <Link to="/pharmacy" style={{color:"black"}}>
+            <ListItem  disablePadding>
+                <ListItemButton >
+                  <ListItemIcon>
+                   
+                  </ListItemIcon>
+                  <ListItemText primary={"Pharmacy"} />
+                </ListItemButton>
+              </ListItem>  
+            
+            </Link>
           </List>
           <Divider />
           <List>
-            {[ 'Trash', 'Log Out'].map((text, index) => (
-              <ListItem key={text} disablePadding>
-                <ListItemButton>
+           {token?
+             
+              <ListItem disablePadding>
+                <ListItemButton onClick={handleLogOut}>
                   <ListItemIcon>
-                    {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
+                   
                   </ListItemIcon>
-                  <ListItemText primary={text} />
+                  <ListItemText primary={"LogOut"} />
                 </ListItemButton>
-              </ListItem>
-            ))}
+              </ListItem>:
+               <ListItem disablePadding>
+               <ListItemButton>
+                 <ListItemIcon>
+                   {/* {index % 2 === 0 ? <InboxIcon /> : <MailIcon />} */}
+                 </ListItemIcon>
+                 <ListItemText primary={"Log In"} />
+               </ListItemButton>
+             </ListItem>
+              
+            }
+            
           </List>
         </Box>
       );

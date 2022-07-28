@@ -10,16 +10,21 @@ import { useEffect } from 'react';
 import axios from 'axios';
 import { Box } from '@mui/system';
 import { useState } from 'react';
+import { Link } from 'react-router-dom';
+// import { useDispatch, useSelector } from 'react-redux';
+// import { Int_Data, Sort_Data } from '../Redux/data/action';
 
 export const Home = () => {
 
   const [fetchData,setFetchData]=React.useState([])
-  const [page,setPage]=React.useState(1)
+  const [page,setPage]=useState(1)
   const [sort,setSort]=useState(null)
-  const [filterData,setFilterData]=useState([])
+  // const [ratingFilter,setRatingFilter]=useState([])
+  const [ratingNum,setRatingNum]=useState(null)
 
 
-  const fetching_func=()=>{
+
+  const fetching_func=(page)=>{
     axios({
       method:"get",
       url:`http://localhost:3000/products?_page=${page}&_limit=6`
@@ -29,7 +34,7 @@ export const Home = () => {
   }
 
   useEffect(()=>{
-   fetching_func()
+    fetching_func(page)
   },[page])
 
 
@@ -43,22 +48,50 @@ const handleSort=(type)=>{
   if(sort===type){
     setSort(null)
     fetching_func()
+    // dispatch(Int_Data(page))
   }
+
   else{
- setSort(type)
-  axios({
-    method:"get",
-    url:`http://localhost:3000/products?_page=${page}&_limit=6&_sort=price&_order=${type}`
-  })
-  .then((res)=>{setFetchData(res.data)})
-  .catch((err)=>{console.log(err)})
- }
+setSort(type)
+axios({
+  method:"get",
+  url:`http://localhost:3000/products?_page=${page}&_limit=6&_sort=price&_order=${type}`
+})
+.then((res)=>setFetchData(res.data))
+.catch((err)=>{console.log(err)})
+}
 }
 
-const handleFilter=(star)=>{  
-  // fetching_func()
-  const updatedData=  fetchData.filter((item)=>{return item.rating>=star})
-  setFetchData(updatedData)
+
+
+// const handleFilter=(star)=>{ 
+  
+//   if(ratingArray.includes(star)){
+//     const updatedArray=ratingArray.filter((el)=>el!==star)
+//     setRatingArray(updatedArray)
+//    return;
+//   }
+//   else{
+
+//     setRatingArray(prev=>([...prev,star]))
+//   }
+// }
+
+const handleFilter=(value)=>{
+
+if(ratingNum===value){
+  setRatingNum(null)
+  fetching_func()
+  return;
+}  
+
+setRatingNum(value)
+axios({
+    method:"get",
+    url:`http://localhost:3000/products?_page=${page}&_limit=6&rating_gte=${value}&rating_lte=${value+1}`
+  })
+  .then((res)=>{setFetchData(res.data)})
+
 }
 
   return (
@@ -72,12 +105,12 @@ const handleFilter=(star)=>{
       </Box>
 
       <Box id="rating_filter">
-    <Button variant='outlined' Color='error'>Filter</Button>
-   <Button variant='contained' onClick={()=>{handleFilter(1)}}>1⭐</Button>
-   <Button variant='contained' onClick={()=>{handleFilter(2)}}>2⭐</Button>
-   <Button variant='contained' onClick={()=>{handleFilter(3)}}>3⭐</Button>
-   <Button variant='contained' onClick={()=>{handleFilter(4)}}>4⭐</Button>
-   <Button variant='contained' onClick={()=>{handleFilter(5)}}>5⭐</Button>
+    <Button variant="outlined" >Filter</Button>
+   <Button variant={ratingNum===4?"contained":"outlined"}  onClick={()=>{handleFilter(4)}}>5 to 4 ⭐</Button>
+   <Button variant={ratingNum===3?"contained":"outlined"}  onClick={()=>{handleFilter(3)}}>4 to 3 ⭐</Button>
+   <Button variant={ratingNum===2?"contained":"outlined"}  onClick={()=>{handleFilter(2)}}>3 to 2 ⭐</Button>
+   <Button variant={ratingNum===1?"contained":"outlined"}  onClick={()=>{handleFilter(1)}}>2 to 1 ⭐</Button>
+   {/* <Button variant={ratingArray.includes(4)?"contained":"outlined"} color="success" onClick={()=>{handleFilter(5)}}>5⭐</Button> */}
       </Box>
 
     <div id='data_grid'>
@@ -101,8 +134,8 @@ const handleFilter=(star)=>{
         </Typography>
       </CardContent>
       <CardActions>
-        <Button size="small">Add To Cart</Button>
-        <Button size="small">Learn More</Button>
+        <Link to={`/individual/${item.id}`}><Button size="small">View</Button></Link>
+        {/* <Button size="small">Learn More</Button> */}
       </CardActions>
     </Card>
     })
@@ -120,3 +153,4 @@ const handleFilter=(star)=>{
 </React.Fragment>
   )
 }
+

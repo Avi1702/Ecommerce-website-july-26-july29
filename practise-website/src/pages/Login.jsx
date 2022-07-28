@@ -18,7 +18,7 @@ export const Login = () => {
 
     const dispatch=useDispatch()
 
-    const {loading,token}=useSelector(state=>state)
+    const {token}=useSelector(state=>state)
 
    
     const handleChange=(e)=>{
