@@ -6,22 +6,21 @@ import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Navigate } from 'react-router-dom';
 import { Loging_in } from '../Redux/auth/action';
-// import { useSelect } from '@mui/base';
+// import { Spinner } from "@chakra-ui/spinner"
+
 
 export const Login = () => {
     const [state,setstate]=useState({
+
         email:"",
         password:""
     })
 
     const dispatch=useDispatch()
 
-    const {token}=useSelector(state=>state)
+    const {loading,token}=useSelector(state=>state)
 
    
-
-    
-
     const handleChange=(e)=>{
         const {name,value}=e.target
 
@@ -32,9 +31,6 @@ export const Login = () => {
         
         dispatch(Loging_in(payload))
 
-       
-        // console.log("hi")
-
     }
     
     if(token){
@@ -43,7 +39,10 @@ export const Login = () => {
 
 
   return (
+    
+    
     <div className='Login'>
+   
     <Box className='input_part'
     component="form"
     sx={{
@@ -55,10 +54,11 @@ export const Login = () => {
     <TextField id="outlined-basic" label="Email" variant="outlined" name='email' value={state.email} onChange={handleChange}/>
     <TextField id="outlined-basic" label="Password" variant="outlined" name="password" type={"password"} value={state.password} onChange={handleChange} />
     <Button variant="outlined" onClick={()=>{handleLogin(state)}}>Log In</Button>
-    
-    {/* <TextField id="filled-basic" label="Filled" variant="filled" />
-    <TextField id="standard-basic" label="Standard" variant="standard" /> */}
+  
   </Box>
+  
   </div>
+    
   )
+  
 }

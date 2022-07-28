@@ -7,7 +7,10 @@ import {Routes, Route} from "react-router-dom"
 import { Home } from './pages/Home';
 import { Private } from './components/Private';
 
+
 function App() {
+
+  
   return (
     <div className="App">
       <Navbar />
