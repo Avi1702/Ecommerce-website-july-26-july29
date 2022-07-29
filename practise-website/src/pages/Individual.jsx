@@ -17,6 +17,7 @@ export const Individual = () => {
     const {productId}=useParams()
     const [cartItem,setcartItem]=useState({})
     const [cartData,setCartData]=useState([])
+    const [added,setAdded]=useState(false)
     const navigate=useNavigate()
     // console.log(productId)
     useEffect(()=>{
@@ -30,6 +31,7 @@ export const Individual = () => {
 
    const handleADC=(item)=>{
 // document.getElementById("ADC").ariaDisabled=true
+   setAdded(!added)
     axios({
         method:"post",
         url:"http://localhost:3000/cartItems",
@@ -62,7 +64,7 @@ export const Individual = () => {
       </CardContent>
       <CardActions>
 
-      <Button id="ADC" size="small" onClick={()=>handleADC(cartItem)}>Add To Cart</Button>
+     {added?<Button variant='outlined'>Added</Button>:<Button id="ADC" size="small" onClick={()=>handleADC(cartItem)}>Add To Cart</Button>}
       
         {/* <Button size="small">Learn More</Button> */}
       </CardActions>

@@ -11,6 +11,7 @@ import { Pharmacy } from './pages/Pharmacy';
 import { Individual } from './pages/Individual';
 import {Link} from "react-router-dom"
 import { Cart } from './pages/Cart';
+import { Checkout } from './pages/Checkout';
 // import KeyboardBackspaceIcon from '@mui/icons-material/KeyboardBackspace';
 
 
@@ -20,7 +21,7 @@ function App() {
   return (
     <div className="App">
       <Navbar />
-      <Link to="/" style={{color:"purple"}}>Go back</Link>
+      {/* <Link to="/" style={{color:"purple"}}>Go back</Link> */}
       <Routes>
         <Route path="/login" element={<Login/>}></Route>
         <Route path="/" element={<Private><Home/></Private>}></Route>
@@ -28,6 +29,8 @@ function App() {
         <Route path="/pharmacy" element={<Private><Pharmacy/></Private>}></Route>
         <Route path="/individual/:productId" element={<Private><Individual/></Private>}></Route>
         <Route path="/cart" element={<Private><Cart/></Private>}></Route>
+        <Route path="/checkout" element={<Private><Checkout/></Private>}></Route>
+
 
       </Routes>
   

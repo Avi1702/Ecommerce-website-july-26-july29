@@ -10,19 +10,7 @@
       "category": "grocery",
       "hex": "#12b8d9",
       "imageBase": "https://via.placeholder.com/500",
-      "count": 1
-    },
-    {
-      "id": 2,
-      "title": "Flour - Teff",
-      "color": "Mauv",
-      "price": 3659,
-      "description": "elit ac nulla sed vel enim sit amet nunc viverra dapibus nulla suscipit ligula in lacus curabitur at ipsum ac tellus semper interdum mauris ullamcorper purus sit amet nulla quisque arcu libero rutrum ac lobortis vel dapibus at diam nam tristique tortor eu",
-      "rating": 2,
-      "category": "grocery",
-      "hex": "#177e20",
-      "imageBase": "https://via.placeholder.com/500",
-      "count": 1
+      "count": 2
     },
     {
       "id": 3,
