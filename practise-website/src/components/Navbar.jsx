@@ -20,6 +20,7 @@ import ListItemText from '@mui/material/ListItemText';
 import {Link} from "react-router-dom"
 import { useDispatch, useSelector } from 'react-redux';
 import { LogOut_success } from '../Redux/auth/action';
+import ShoppingCartSharpIcon from '@mui/icons-material/ShoppingCartSharp';
 
 
 export default function Navbar() {
@@ -144,6 +145,8 @@ export default function Navbar() {
           <Link to="/">Home</Link>
           </Typography>
           {/* <Button color="inherit">Login</Button> */}
+          <Link to="/cart" style={{marginRight:"10%"}} ><ShoppingCartSharpIcon  /></Link>
+    
           {token?<button style={{borderRadius:"8px",border:"none", padding:"5px", boxShadow: "rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px"}} onClick={handleLogOut}>LOG OUT</button>:  <Link to="/login">LOGIN</Link>}
         
           

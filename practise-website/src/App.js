@@ -10,6 +10,7 @@ import { Grocery } from './pages/Grocery';
 import { Pharmacy } from './pages/Pharmacy';
 import { Individual } from './pages/Individual';
 import {Link} from "react-router-dom"
+import { Cart } from './pages/Cart';
 // import KeyboardBackspaceIcon from '@mui/icons-material/KeyboardBackspace';
 
 
@@ -26,6 +27,8 @@ function App() {
         <Route path="/grocery" element={<Private><Grocery/></Private>}></Route>
         <Route path="/pharmacy" element={<Private><Pharmacy/></Private>}></Route>
         <Route path="/individual/:productId" element={<Private><Individual/></Private>}></Route>
+        <Route path="/cart" element={<Private><Cart/></Private>}></Route>
+
       </Routes>
   
     </div>
