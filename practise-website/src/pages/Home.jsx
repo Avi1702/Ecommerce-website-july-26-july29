@@ -27,7 +27,7 @@ export const Home = () => {
   const fetching_func=(page)=>{
     axios({
       method:"get",
-      url:`http://localhost:3000/products?_page=${page}&_limit=6`
+      url:`https://practise-heroku-deployment.herokuapp.com/products?_page=${page}&_limit=6`
     })
     .then((res)=>setFetchData(res.data))
     .catch((err)=>{console.log(err)})
