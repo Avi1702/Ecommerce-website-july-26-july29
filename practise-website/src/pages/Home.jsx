@@ -55,7 +55,7 @@ const handleSort=(type)=>{
 setSort(type)
 axios({
   method:"get",
-  url:`http://localhost:3000/products?_page=${page}&_limit=6&_sort=price&_order=${type}`
+  url:`https://practise-heroku-deployment.herokuapp.com/products?_page=${page}&_limit=6&_sort=price&_order=${type}`
 })
 .then((res)=>setFetchData(res.data))
 .catch((err)=>{console.log(err)})
@@ -88,7 +88,7 @@ if(ratingNum===value){
 setRatingNum(value)
 axios({
     method:"get",
-    url:`http://localhost:3000/products?_page=${page}&_limit=6&rating_gte=${value}&rating_lte=${value+1}`
+    url:`https://practise-heroku-deployment.herokuapp.com/products?_page=${page}&_limit=6&rating_gte=${value}&rating_lte=${value+1}`
   })
   .then((res)=>{setFetchData(res.data)})
 

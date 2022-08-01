@@ -19,7 +19,7 @@ const navigate=useNavigate()
 const initial_fetch=()=>{
   axios({
     method:"get",
-    url:"http://localhost:3000/cartItems"
+    url:"https://practise-heroku-deployment.herokuapp.com/cartItems"
 })
 .then((res)=>setCartData(res.data))
 }
@@ -31,7 +31,7 @@ useEffect(()=>{
 const delete_func=(Id)=>{
   axios({
     method:"delete",
-    url:`http://localhost:3000/cartItems/${Id}`,
+    url:`https://practise-heroku-deployment.herokuapp.com/cartItems/${Id}`,
   })
   .then((res)=>initial_fetch())
 }
@@ -45,7 +45,7 @@ const handleInc=(Id)=>{
 
 axios({
     method:"patch",
-    url:`http://localhost:3000/cartItems/${Id}`,
+    url:`https://practise-heroku-deployment.herokuapp.com/cartItems/${Id}`,
     data:{
         count:sum
     }
@@ -66,7 +66,7 @@ const handleDec=(Id)=>{
 else{
 axios({
   method:"patch",
-  url:`http://localhost:3000/cartItems/${Id}`,
+  url:`https://practise-heroku-deployment.herokuapp.com/cartItems/${Id}`,
   data:{
       count:sum
   }

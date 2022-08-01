@@ -14,7 +14,7 @@ export const Checkout = () => {
     const initial_fetch=()=>{
         axios({
           method:"get",
-          url:"http://localhost:3000/cartItems"
+          url:"https://practise-heroku-deployment.herokuapp.com/cartItems"
       })
       .then((res)=>setCheckout(res.data));
       

@@ -23,7 +23,7 @@ export const Individual = () => {
     useEffect(()=>{
         axios({
             method:"get",
-            url:`http://localhost:3000/products/${productId}`
+            url:`https://practise-heroku-deployment.herokuapp.com/products/${productId}`
         })
         .then((res)=>setcartItem(res.data))
         .then((err)=>{console.log(err)})
@@ -34,7 +34,7 @@ export const Individual = () => {
    setAdded(!added)
     axios({
         method:"post",
-        url:"http://localhost:3000/cartItems",
+        url:"https://practise-heroku-deployment.herokuapp.com/cartItems",
         data:{...item,count:1}
     })
     .then((res)=>setCartData(res.data))
